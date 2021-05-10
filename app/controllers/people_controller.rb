@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  # layout 'people'
 
   def index
     @msg = 'Person data'
