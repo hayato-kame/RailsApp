@@ -41,6 +41,27 @@ class PeopleController < ApplicationController
     redirect_to controller: 'people', action: 'index', params: {f_msg: '登録成功！！！'}
   end
 
+  def edit
+    @msg = 'id: ' + params[:id] + ' のデータを編集します'
+    @person = Person.find(params[:id])
+    render 'edit'
+  end
+
+  def update
+    @update_person = Person.find(params[:id])
+    @update_person.update(person_params)
+    redirect_to '/people?f_msg=更新に成功しました'
+    # redirect_to controller: 'people' , action: 'index', params: {f_msg: '更新しました！！！'}
+  end
+
+  def delete
+    @delete_person = Person.find(params[:id])
+    @delete_person.destroy
+    # redirect_to '/people?f_msg=削除しました'
+    redirect_to controller: 'people', action: 'index', params: {'f_msg': '削除しましたyo！！！'}
+
+  end
+
   private
   def person_params
     params.require(:person).permit(:name, :age, :mail)

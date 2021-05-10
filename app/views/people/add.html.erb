@@ -2,7 +2,9 @@
 
 <p><%= @msg %></p>
 
-<%# もうちょっと違った、モデルを利用したやり方があります %>
+<%# もうちょっと違った、モデルを利用したやり方があります
+  このやり方ではなく、下の方を使ってください
+%>
 <%= form_tag(controller: 'people', action: 'add' ) do %>
   <div class="form-group">
     <label for="name">Name</label><%= text_field_tag("name", "", {class: "form-control"}) %>

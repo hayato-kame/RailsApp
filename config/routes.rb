@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   get 'people/add'
   post 'people/add', to: 'people#create'
 
+  get 'people/delete/:id', to: 'people#delete'
+
+  # パラメータ付きアドレスのルーティングは関係するルーティングの一番下に書いてください
+  get 'people/edit/:id' , to: 'people#edit'
+  patch 'people/edit/:id', to: 'people#update'
+
   # パラメータ付きアドレスのルーティングは関係するルーティングの一番下に書いてください
   get 'people/:id', to: 'people#show'
 end
