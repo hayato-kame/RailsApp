@@ -142,12 +142,39 @@ class PeopleController < ApplicationController
   #   # redirect_to controller: 'people', action: 'index', params: {f_msg: '作成成功しました'}
   # end
 
+  # def create
+  #   if request.post? then
+  #     Person.create(person_params)
+  #   end
+  #   # redirect_to '/people?f_msg=登録できたよ〜〜〜〜〜'
+  #   redirect_to controller: 'people', action: 'index', params: {f_msg: '登録成功！！！'}
+  # end
+
+
+  # バリデーションチェックする
+
+  # def create
+  #   @person = Person.new person_params
+  #   if @person.save then
+  #     # redirect_to '/people?f_msg=登録成功しました！！'
+  #     redirect_to controller: 'people', action: 'index', params: {'f_msg': '成功だ！！'}
+  #   else
+  #     @msg = '問題があります'
+  #     @f_msg = '失敗しました'
+  #     # renderは、インスタンス変数は何もしなくてもテンプレートに渡せます
+  #     render 'add'
+  #   end
+  # end
+
   def create
-    if request.post? then
-      Person.create(person_params)
+    @person = Person.new person_params
+    if @person.save then
+      # redirect_to '/people?f_msg=保存に成功しました！！'
+      redirect_to controller: 'people', action: 'index', params: {'f_msg': '成功ですね！'}
+    else
+      @f_msg = '保存に失敗しました、修正してください！！'
+      render 'add'
     end
-    # redirect_to '/people?f_msg=登録できたよ〜〜〜〜〜'
-    redirect_to controller: 'people', action: 'index', params: {f_msg: '登録成功！！！'}
   end
 
   def edit
