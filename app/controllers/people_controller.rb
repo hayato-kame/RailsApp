@@ -10,8 +10,116 @@ class PeopleController < ApplicationController
     render 'index'
   end
 
+  # def find
+  #   @msg = '検索画面'
+  #   # 配列オブジェクトです GETアクセスなら、空の配列をリターン
+  #   @people = Array.new
+  #   @f_msg = params[:f_msg]
+
+  #   if request.post? then
+  #     obj = Person.find params['find']
+  #     @people.push obj
+  #     # render 'find', params: {f_msg: '検索結果です'} and return
+  #     render 'find' and return
+  #   end
+  #   # render 'find', params: {f_msg: '検索をします'}
+  #   render 'find'
+  # end
+
+  # def find
+  #   @msg = '検索'
+  #   @people = Array.new
+  #   if request.post? then
+  #     # 完全一致
+  #     @people = Person.where name: params[:find]
+  #   end
+  # end
+
+  # def find
+  #   @msg = '式を用いた検索'
+  #   @people = Array.new
+  #   if request.post? then
+  #     # 第一引数に条件式とプレースホルダー 第二引数にプレースホルダーに当てはめる値　括弧は省略できる
+  #     @people = Person.where("age >= ?", params[:find])
+  #     pp @people
+  #   end
+  #   render 'find'
+  # end
+
+  # def find
+  #   @msg = 'LIKE演算式'
+  #   @people = Array.new
+  #   if request.post? then
+  #     @people = Person.where "mail like ?", '%' + params[:find] + '%'
+  #   end
+  #   render 'find'
+  # end
+
+  # def find
+  #   @msg = '複数条件検索'
+  #   @people = Array.new
+  #   if request.post? then
+  #     f = params[:find].split ','
+  #     @people = Person.where("age >= ? and age <= ?", f[0], f[1])
+  #   end
+  #   render 'find'
+  # end
+
+  # def find
+  #   @msg = 'OR演算子について'
+  #   @people = Array.new
+  #   if request.post? then
+  #     f = '%' + params[:find] + '%'
+  #     @people = Person.where( "name like ? or mail like ?", f, f)
+  #   end
+  #   render 'find'
+  # end
+
+  # def find
+  #   @msg = '検索結果'
+  #   @people = Array.new
+  #   if request.post? then
+  #     f = '%' + params[:find] + '%'
+  #     result = Person.where "name like ? or mail like ? ", f, f
+  #     @people.push result.first
+  #     @people.push result.last
+  #   end
+  #   render 'find'
+  # end
+
+  #  def find
+  #    @msg = '複数選択できるfindメソッドです'
+  #    @people = Array.new
+  #    if request.post? then
+  #     f = params[:find].split ','
+  #     @people = Person.find(f)
+  #     pp @people
+  #    end
+  #    render 'find'
+  #  end
+
+  # def find
+  #   @msg = '検索結果'
+  #   @people = Array.new
+  #   if request.post? then
+  #     f = params[:find].split ','
+  #     @people = Person.where('name like ?', '%' + params[:find] + '%').order 'age asc'
+  #   end
+  # end
+
+  def find
+    @msg = '検索'
+    if request.post? then
+      f = params[:find].split ','
+      @people = Person.all.limit(f[0]).offset(f[1])
+    else
+      @people = Person.all
+    end
+  end
+
+
   def show
-    @mdg = '検索結果'
+    @msg = '詳細'
     @data = Person.find(params[:id])
     pp @data
     # binding.pry
