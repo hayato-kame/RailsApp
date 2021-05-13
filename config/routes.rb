@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :answers
+  resources :questions
   resources :mycontacts
   # 以下を一つにまとめてます ただし、これを書いても、リンクなどがうまく機能しませんの
   # resoutces :mycontacts を書かないと、やはりうまく機能しません
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
           patch 'mycontacts/:id', to: 'mycontacts#update'
           put 'mycontacts/:id', to: 'mycontacts#update'
 
-          get 'mycontacts/:id', to: 'mycontacts#destroy'
+          delete 'mycontacts/:id', to: 'mycontacts#destroy'
 =end
 
   get 'messages/index'
