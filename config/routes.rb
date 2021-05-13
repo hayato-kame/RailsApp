@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+
+  resources :mycontacts
+  # 以下を一つにまとめてます ただし、これを書いても、リンクなどがうまく機能しませんの
+  # resoutces :mycontacts を書かないと、やはりうまく機能しません
+=begin
+          get 'mycontacts', to: 'mycontacts#index'
+
+          get 'mycontacts/new', to: 'mycontacts#new'
+          post 'mycontacts', to: 'mycontacts#create'
+
+          get 'mycontacts/:id', to: 'mycontacts#show'
+
+          get 'mycontacts/:id/edit', to: 'mycontacts#edit'
+
+          patch 'mycontacts/:id', to: 'mycontacts#update'
+          put 'mycontacts/:id', to: 'mycontacts#update'
+
+          get 'mycontacts/:id', to: 'mycontacts#destroy'
+=end
+
   get 'messages/index'
   get 'messages', to: 'messages#index'
 
