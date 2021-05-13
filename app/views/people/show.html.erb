@@ -15,4 +15,19 @@
   <tr>
     <th>Mail</th><td><%= @data.mail %></td>
   </tr>
+
+
+
+  <tr>
+    <th>メッセージ</th>
+
+  <td>
+    <% if @data.message != nil then %>
+      <% @data.message.each do |obj| %>
+        <%= obj.title %><br>
+      <% end %>
+    <% end %>
+</td>
+  </tr>
+
 </table>

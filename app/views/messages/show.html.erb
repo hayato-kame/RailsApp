@@ -1,0 +1,17 @@
+<h1 class="display-4 text-primary">Messages#show</h1>
+<p><%= @msg %></p>
+
+<p style="color:red"><%= @f_msg %></p>
+
+<table class="table">
+  <tr><th>Id</th><td><%= @message.id %></td></tr>
+
+  <tr><th>投稿者</th><td><%= @message.person_id %></td></tr>
+
+  <tr><th>タイトル</th><td><%= @message.title %></td></tr>
+
+  <tr><th>メッセージ<th><td><%= @message.message %></td><tr>
+
+  <tr><th>作成日</th><td><%= @message.created_at %></td></tr>
+  
+</table>

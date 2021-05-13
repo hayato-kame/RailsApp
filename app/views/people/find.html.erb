@@ -4,8 +4,8 @@
 
 <p><%= @f_msg %></p>
 
+<%# <%= form_tag(controller: "people", action: "find" ) do %> %>
 <%= form_tag(controller: "people", action: "find" ) do %>
-
   <div class="form-group">
     <label for="find">Find</label>
     <%= text_field_tag("find", "", {class: "form-control" }) %>

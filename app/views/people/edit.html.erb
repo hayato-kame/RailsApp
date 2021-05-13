@@ -4,8 +4,8 @@
 
 <p><%= @f_msg %></p>
 
-<%= form_for(@person, url: {controller: 'people', action: 'update', id: @person.id }) do |form| %>
-
+<%# <%= form_for(@person, url: {controller: 'people', action: 'update', id: @person.id }) do |form| %> %>
+<%= form_with(moddel: @person, url: {controller: 'people', action: 'update', id: @person.id }) do |form| %>
   <div class="form-group">
     <label for="name">Name</label>
     <%= form.text_field :name, {class: "form-control"} %>
